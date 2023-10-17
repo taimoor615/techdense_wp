@@ -16,76 +16,39 @@
             <div class="container">
                 <div class="footer-contact-form-wrapper">
                     <div class="footer-form">
-                        <form action="" class="form-wrapper">
-                            <div class="form-single">
-                                <select name="" id="">
-                                    <option value="">Select 1</option>
-                                    <option value="">Select 2</option>
-                                    <option value="">Select 3</option>
-                                </select>
-                            </div>
-                            <div class="form-multiple">
-                                <div class="form-field">
-                                    <input type="text" placeholder="Name" name="" id="">
-                                </div>
-                                <div class="form-field">
-                                    <input type="email" placeholder="Corporate E-mail*" name="" id="">
-                                </div>
-                            </div>
-                            <div class="form-single">
-                                <input type="tel" placeholder="Phone*" name="" id="">
-                            </div>
-                            <div class="form-single">
-                                <textarea name="" id="" cols="30" rows="4" placeholder="Please describe your project requirements*"></textarea>
-                            </div>
-                            <div class="form-link">
-                                <p>We will call you ASAP or you can <a href="">Schedule a call</a></p>
-                            </div>
-                            <div class="form-attach-wrapper">
-                                <div class="file-attach-input">
-                                    <input type="file" name="" id="attach-doc" accept="">
-                                        <label for="attach-doc" class="attach-doc-lbl">
-                                            <img src="images/attach-file-icon.svg" alt="Attach File Icon" srcset="" class="img-fluid">
-                                            Attach file
-                                        </label>
-                                </div>
-                                <div class="attach-text">
-                                    <p>No more than 3 files may be attached up to 3MB each. Formats: doc, docx, pdf, ppt, pptx.</p>
-                                </div>
-                            </div>
-                            <div class="accept-nda-wrapper">
-                                <input type="checkbox" name="" id="nda-checkbox"> 
-                                <label for="nda-checkbox">I want to protect my data by signing an NDA.</label>
-                            </div>
-                            <div class="submit-wrapper">
-                                <input type="submit" value="Send Request">
-                            </div>
-                        </form>
+						<?php echo do_shortcode('[contact-form-7 id="f4c25bb" title="Footer Form"]');?>
+                        <!-- <form action="" class="form-wrapper">
+                            
+                        </form> -->
                     </div>
                     <div class="footer-consultation">
-                        <h2>Order a free IT </br> consultation</h2>
-                        <p>What happens next?</p>
+                        <?php if(get_field('it_consultation_heading','options')):?>
+						<h2><?php the_field('it_consultation_heading','options')?></h2>
+						<?php endif;?>
+						<?php if(get_field('what_happens_heading','options')):?>
+                        <p class="happens-text"><?php the_field('what_happens_heading','options');?></p>
+						<?php endif;?>
                         <div class="footer-steps-wrapper">
+							<?php if(have_rows('what_happens_steps','options')): $count = 1;?>
+							<?php while(have_rows('what_happens_steps','options')):the_row();?>
                             <div class="footer-step">
-                                <span>1</span>
-                                <p>An expert contacts you after having analyzed your requirements;</p>
+                                <span><?php echo $count;?></span>
+                                <p><?php the_sub_field('step_title');?></p>
                             </div>
-                            <div class="footer-step">
-                                <span>1</span>
-                                <p>An expert contacts you after having analyzed your requirements;</p>
-                            </div>
-                            <div class="footer-step">
-                                <span>1</span>
-                                <p>An expert contacts you after having analyzed your requirements;</p>
-                            </div>
+							<?php $count++; endwhile; endif;?>
                         </div>
-                        <p class="trusted-para">Trusted by the world’s biggest brands</p>
+						<?php if(get_field('world_biggest_brand_heading','options')):?>
+                        <p class="trusted-para"><?php the_field('world_biggest_brand_heading','options');?></p>
+						<?php endif;?>
                         <div class="footer-form-logos">
+							<?php if(have_rows('brands_repeater','options')):?>
+							<?php while(have_rows('brands_repeater','options')):the_row();?>
+                            <img src="<?php echo get_sub_field('brands_icon');?>" alt="Brand Logo" srcset="" class="img-fluid">
+							<?php endwhile; endif;?>
+                            <!-- <img src="images/fazier-icon.svg" alt="Fazier Logo" srcset="" class="img-fluid">
                             <img src="images/fazier-icon.svg" alt="Fazier Logo" srcset="" class="img-fluid">
                             <img src="images/fazier-icon.svg" alt="Fazier Logo" srcset="" class="img-fluid">
-                            <img src="images/fazier-icon.svg" alt="Fazier Logo" srcset="" class="img-fluid">
-                            <img src="images/fazier-icon.svg" alt="Fazier Logo" srcset="" class="img-fluid">
-                            <img src="images/fazier-icon.svg" alt="Fazier Logo" srcset="" class="img-fluid">
+                            <img src="images/fazier-icon.svg" alt="Fazier Logo" srcset="" class="img-fluid"> -->
                         </div>
                     </div>
                 </div>

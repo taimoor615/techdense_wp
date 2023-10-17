@@ -231,7 +231,7 @@ function twenty_twenty_one_scripts() {
 		
 		// Bootstrap CSS .
 		wp_enqueue_style( 'techdense-bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), wp_get_theme()->get( 'Version' ) );
-		
+
 		// If not IE, use the standard stylesheet.
 		wp_enqueue_style( 'techdense-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get( 'Version' ) );
 	}
@@ -482,3 +482,44 @@ if ( ! function_exists( 'wp_get_list_item_separator' ) ) :
 		return __( ', ', 'twentytwentyone' );
 	}
 endif;
+
+// Services Post Type
+function services_cpt() {
+    $labels = array(
+        'name' => 'Services',
+        'singular_name' => 'Service',
+        'menu_name' => 'Services'
+    );
+    $args = array(
+        'labels' => $labels,
+        'hierarchical' => true,
+        'publicly_queryable' => true,
+		'public' => true
+    );
+    register_post_type('services', $args);
+}
+
+add_action('init', 'services_cpt', 10);
+
+
+// Case Study Post Type
+function case_study_cpt() {
+    $labels = array(
+        'name' => 'Case Study',
+        'singular_name' => 'Case Studies',
+        'menu_name' => 'Case Studies'
+    );
+    $args = array(
+        'labels' => $labels,
+        'hierarchical' => true,
+        'publicly_queryable' => true,
+		'public' => true
+    );
+    register_post_type('case_studies', $args);
+}
+add_action('init', 'case_study_cpt', 10);
+
+// Enable Option for ACF
+if(function_exists('acf_add_options_page')){
+	acf_add_options_page();
+}

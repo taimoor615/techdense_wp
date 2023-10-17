@@ -250,6 +250,7 @@ input,select,textarea{
     box-shadow: unset;
     color: var(--neutral-dgrey);
     font-size: 16px;
+	resize: none;
 }
 .outline-btn,.filled-btn,.outline-btn:hover{
     background-color: var(--primary-orange);
@@ -318,6 +319,9 @@ header{
 .menu-item-has-children a svg{
     transition: .3s;
     margin-left: 3px;
+}
+.sub-menu-toggle{
+	display: none;
 }
 .sub-menu{
     width: 730px;
@@ -398,6 +402,10 @@ li.submenu-wrapper div.see-all-services-wrapper a{
 }
 .toggle-btn-wrapper{
     display: none;
+}
+.menu-item-has-children:after{
+	content: "";
+
 }
 .menu-item-has-children li.submenu-wrapper a svg{
     margin-left: 10px;
@@ -1225,14 +1233,14 @@ section.contact-form-footer-sec {
     /* appearance: none; */
     display: none;
 }
-.accept-nda-wrapper label{
+.accept-nda-wrapper .wpcf7-list-item-label{
     font-size: 12px;
     color: var(--neutral-dgrey);
     padding-left: 30px; /* Adjust this value to set the checkbox size */
     cursor: pointer;
     position: relative;
 }
-.accept-nda-wrapper label:before{
+.accept-nda-wrapper .wpcf7-list-item-label:before{
     content: '';
     position: absolute;
     left: 0;
@@ -1243,11 +1251,11 @@ section.contact-form-footer-sec {
     background-color: transparent; /* Background color of the checkbox */
     border-radius: 4px;
 }
-.accept-nda-wrapper input[type="checkbox"]:checked + label:before{
+.accept-nda-wrapper input[type="checkbox"]:checked + .wpcf7-list-item-label:before{
     background-color: var(--primary-orange); /* Background color when checked */
     border-color: var(--primary-orange); /* Border color when checked */
 }
-.accept-nda-wrapper input[type="checkbox"]:checked + label:after{
+.accept-nda-wrapper input[type="checkbox"]:checked + .wpcf7-list-item-label:after{
     content: '\2713'; /* Unicode checkmark character */
     position: absolute;
     top: 2px; /* Adjust this value for vertical alignment */
@@ -1255,6 +1263,9 @@ section.contact-form-footer-sec {
     color: #fff; /* Color of the checkmark */
     font-size: 16px; /* Adjust this value for the checkmark size */
     line-height: 1; /* Adjust this value for vertical alignment of the checkmark */
+}
+.wpcf7-form-control-wrap{
+	width: 100%;
 }
 .submit-wrapper{
     width: 184px;
@@ -1278,7 +1289,7 @@ section.contact-form-footer-sec {
     margin-bottom: 24px;
 }
 .footer-consultation p{
-    color: var(--neutral-lgrey);
+    color: var(--neutral-dgrey);
     font-size: 14px;
 }
 .footer-steps-wrapper{
@@ -1286,6 +1297,10 @@ section.contact-form-footer-sec {
 }
 .footer-steps-wrapper p{
     font-weight: 400;
+	color: var(--neutral-lgrey);
+}
+.footer-consultation p.happens-text{
+	color: var(--neutral-grey);
 }
 .footer-steps-wrapper .footer-step{
     display: flex;
@@ -1305,11 +1320,27 @@ section.contact-form-footer-sec {
     font-weight: 600;
     display: flex;
     align-items: center;
+	position: relative;
     justify-content: center;
+	z-index: 99;
 } 
 .footer-steps-wrapper .footer-step span:before{
     content: "";
-
+	position: absolute;
+    height: 70px;
+    width: 1px;
+    display: block;
+    margin: 0 auto;
+    top: 0;
+    bottom: 0;
+    background-image: linear-gradient(var(--neutral-lgrey), var(--neutral-lgrey) 12px, transparent 12px, transparent);
+    background-size: 100% 20px;
+    left: 0;
+    right: 0;
+    z-index: 9;
+}
+.footer-steps-wrapper .footer-step:last-child span::before{
+	content: unset;
 }
 .trusted-para{
     color: var(--neutral-dgrey);
