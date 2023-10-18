@@ -45,10 +45,6 @@
 							<?php while(have_rows('brands_repeater','options')):the_row();?>
                             <img src="<?php echo get_sub_field('brands_icon');?>" alt="Brand Logo" srcset="" class="img-fluid">
 							<?php endwhile; endif;?>
-                            <!-- <img src="images/fazier-icon.svg" alt="Fazier Logo" srcset="" class="img-fluid">
-                            <img src="images/fazier-icon.svg" alt="Fazier Logo" srcset="" class="img-fluid">
-                            <img src="images/fazier-icon.svg" alt="Fazier Logo" srcset="" class="img-fluid">
-                            <img src="images/fazier-icon.svg" alt="Fazier Logo" srcset="" class="img-fluid"> -->
                         </div>
                     </div>
                 </div>
@@ -61,7 +57,9 @@
             <div class="footer-wrapper">
                 <div class="footer-col-1">
                     <div class="footer-logo-sec">
-                        <img src="images/logo-img.svg" alt="Logo Image" srcset="" class="img-fluid">
+						<?php if(get_field('footer_logo','options')):?>
+                        <img src="<?php the_field('footer_logo','options');?>" alt="Logo Image" srcset="" class="img-fluid">
+						<?php endif;?>
                         <p>We ara a lorem ipsum dolor sit amet, consectetur adipiscing elit, Ut enim ad minim veniam, quis nostrud equip consectetur adipiscing ex ea commodo dolor consequat... </p>
                     </div>
                     <div class="footer-info-wrapper">
