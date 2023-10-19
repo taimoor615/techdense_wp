@@ -136,11 +136,11 @@
                     </div>
                 </div>
                 <div class="pricing-wrapper">
-					<?php if(get_field('schedule_call_link','options')): 
-						$scheduleCallLink = get_field('schedule_call_link','option');?>
-                    	<a href="<?php echo $scheduleCallLink['url']; ?>" class="filled-btn">
-						<?php if(get_field('schedule_call_icon','options')):?> <?php the_field('schedule_call_icon','options');?> <?php endif;?>
-						<?php echo $scheduleCallLink['title']; ?></a>
+					<?php if(get_field('get_pricing','options')): 
+						$getPricingLink = get_field('get_pricing','option');?>
+                    	<a href="<?php echo $getPricingLink['url']; ?>" class="filled-btn">
+						<?php if(get_field('pricing_icon','options')):?> <img src="<?php the_field('pricing_icon','options');?>" alt="" srcset="" class="img-fluid"> <?php endif;?>
+						<?php echo $getPricingLink['title']; ?></a>
 					<?php endif;?>
                 </div>
             </div>
@@ -152,7 +152,7 @@
             <div class="bread-crumbs-wrapper">
                 <ul>
                     <li><a href=""><i class="fa-solid fa-house"></i></a> <i class="fa-solid fa-chevron-right"></i> </li>
-                    <li>Case Studies</li>
+                    <li><?php the_title();?></li>
                 </ul>
             </div>
         </div>

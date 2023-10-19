@@ -3,29 +3,44 @@
         <div class="container">
             <div class="banner-wrapper">
                 <div class="banner-content-left">
-                    <h1>Stay ahead of the curve with our <span>forward-thinking</span></h1>
-                    <p>Our nearshore software development teams onboard quickly to jump-start your tech projects.</p>
+                    <?php if(get_field('banner_heading')):?>
+                        <h1><?php the_field('banner_heading');?></h1>
+                    <?php endif;?>
+                    <?php if(get_field('banner_subheading')):?>
+                        <p><?php the_field('banner_subheading');?></p>
+                    <?php endif;?>
                     <div class="banner-btns-wrapper">
-                        <a href="" class="filled-btn">Schedule a Call</a>
-                        <a href="" class="underline-btn">View Case Study</a>
+                        <?php if(get_field('schedule_call_link','options')): $scheduleCallButton = get_field('schedule_call_link','options');?>
+                            <a href="<?php echo $scheduleCallButton['url']?>" class="filled-btn"><?php echo $scheduleCallButton['title'];?></a>
+                        <?php endif;?>
+                        <?php if(get_field('view_case_link')):
+                            $caseStudyLink = get_field('view_case_link'); ?>
+                        <a href="<?php echo $caseStudyLink; ?>" class="underline-btn">View Case Study</a>
+                        <?php endif;?>
                     </div>
                     <div class="home-world-wide world-biggest-brand-wrapper">
                         <div class="world-brand-text">
-                            <p>Trusted by the world’s biggest brands</p>
+                        <?php if(get_field('world_biggest_brand_heading','options')):?>
+                            <p><?php the_field('world_biggest_brand_heading','options');?></p>
+                            <?php endif;?>
                         </div>
                         <div class="brands-imgs-wrapper">
-                            <img src="images/fazier-icon.svg" alt="Fazier Logo" srcset="" class="img-fluid">
-                            <img src="images/africash-logo.svg" alt="Africash Logo" srcset="" class="img-fluid">
-                            <img src="images/belinker-logo.svg" alt="Belinker Logo" srcset="" class="img-fluid">
-                            <img src="images/snagged-icon.svg" alt="Snagged Logo" srcset="" class="img-fluid">
+                        <?php if(have_rows('brands_repeater','options')):?>
+							<?php while(have_rows('brands_repeater','options')):the_row();?>
+                            <img src="<?php echo get_sub_field('brands_icon');?>" alt="Brand Logo" srcset="" class="img-fluid">
+							<?php endwhile; endif;?>
                         </div>
                     </div>
                 </div>
                 <div class="banner-graphics-right-wrapper">
                     <div class="graphic-top-wrapper">
                         <div class="grphic-top-left">
-                            <img src="images/working-office-img.png" alt="Working Office Image" srcset="" class="img-fluid">
-                            <img src="images/chart-top-icon.svg" alt="Chart fazier-icon" srcset="" class="img-fluid">
+                            <?php if(get_field('banner_laptop_image')):?>
+                            <img src="<?php the_field('banner_laptop_image');?>" alt="Working Office Image" srcset="" class="img-fluid">
+                            <?php endif;?>
+                            <?php if(get_field('banner_chart_icon')):?>
+                            <img src="<?php the_field('banner_chart_icon');?>" alt="Chart fazier-icon" srcset="" class="img-fluid">
+                            <?php endif;?>
                         </div>
                         <div class="graphic-top-right">
                             <h2>230+</h2>

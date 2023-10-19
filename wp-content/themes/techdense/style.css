@@ -509,6 +509,7 @@ li.submenu-wrapper div.see-all-services-wrapper a{
 }
 .world-brand-text p{
     margin-top: 0;
+	color: var(--neutral-black);
 }
 .brands-imgs-wrapper{
     display: flex;
